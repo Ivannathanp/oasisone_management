@@ -1,0 +1,104 @@
+.topbar {
+  width: 100%;
+  height: 97px;
+  position: absolute;
+  z-index: 1;
+  background-color: #df3030;
+}
+
+.topbarcontainer {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding: 0 2% 0 2%;
+}
+
+.topbarheader {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 49px;
+  color: #fff;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  list-style: none;
+  margin-left: 15%;
+}
+
+.menuitem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  margin-right: 5%;
+}
+
+.menulinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 24px;
+  color: #fff;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  height: 100%;
+  border-bottom: 6px solid #df3030;
+}
+
+.menulinks:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 24px;
+  color: #fff;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  height: 100%;
+  border-bottom: 6px solid #fff;
+}
+
+.is-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 24px;
+  color: #fff;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  height: 100%;
+  border-bottom: 6px solid #fff;
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 8%;
+  box-sizing: border-box;
+  align-items: center;
+  padding-top: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  margin-right: 5%;
+}

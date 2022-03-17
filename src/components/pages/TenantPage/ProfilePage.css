@@ -1,0 +1,503 @@
+.profileeditcontainer{
+    width: 1242px;
+    height: 787px;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+}
+
+.outtercontainer{
+display: flex;
+height: 95%;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.innercontainer{
+    display: grid;
+    justify-content: space-between;    
+    align-content: space-between; 
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    height: 100%;
+    padding: 4% 4%;
+    box-sizing: border-box;
+}
+
+.leftcolumncontainer{
+    display: flex;
+    width: 675px;
+    flex-direction: column;
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    flex-direction: row;
+}
+.labelcolumn{
+    display: flex;
+    flex-direction: column;
+}
+.settingslabeltext{
+    font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #AAAAAA;
+}
+.settingslabeltext2{
+    width: 217px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #AAAAAA;
+}
+.settingsinputcontainer{
+    display: flex;
+    position: relative;
+    margin-top: 1%;
+}
+
+.inputcontainer1{
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: #F8FAFB;
+    width: 418px;
+    height: 37px;
+    border-radius: 10px;
+    padding-left: 3%;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #424242;
+}
+
+.colorpick{
+    display: flex;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+}
+
+.passwordsettings{
+    width: 217px;
+    display: flex;
+    align-items: center;
+}
+
+.editpassword{
+    outline: none;
+    border: none;
+    background-color: #F8FAFB;
+    width: 176px;
+    height: 37px;
+    border-radius: 10px;
+    padding-left: 5%;
+    box-sizing: border-box;
+    margin-right: 3%;
+}
+
+.textareainputcontainer{
+    outline: none;
+    border: none;
+    background-color: #F8FAFB;
+    box-shadow: none;
+    width: 675px;
+    height: 97px;
+    padding: 3% 2%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    resize: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #424242;
+    margin-bottom: 3%;
+}
+
+.textareainputcontainer::-webkit-scrollbar{
+    display: none;
+}
+
+.row3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10%;
+
+}
+
+.leftcontainer{
+    height: 200px;
+}
+
+.openhourcontainerbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .openhourbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 531px;
+    height: 349px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+  }
+  
+  .openhourinnerbox {
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    z-index: -2;
+  }
+  .openhourmodaltitle {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 41px;
+    color: #424242;
+    text-align: center;
+  }
+  
+  .openhourinnermodalbox {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  
+  .days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .daysbutton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    border: 1px solid #e52c32;
+    background-color: #ffe4e5;
+    outline: none;
+    box-shadow: none;
+    width: 51px;
+    height: 51px;
+    border-radius: 50px;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #e52c32;
+  }
+  
+  .daysbuttonoff{
+      border: 1px solid #C4C4C4;
+      background-color: transparent;
+      outline: none;
+      box-shadow: none;
+      width: 51px;
+      height: 51px;
+      border-radius: 50px;
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      color: #C4C4C4;
+  }
+  
+  .checkbox{
+      display: flex;
+      height: 30px;
+      margin-top: 1%;
+  }
+  .time{
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 1%;
+      margin-top: 2%;
+  }
+  
+  .opentime{
+      display: flex;
+      flex-direction: column;
+      padding-right: 5%;
+  }
+  .timelabelactive{
+  
+          font-family: "Nunito Sans", sans-serif;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 25px;
+          color: #000; 
+  }
+  .timelabel{
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 25px;
+      color: #C4C4C4;
+  }
+  
+  .timeinputcontainer{
+      display: flex;
+      justify-content: space-between;
+      width: 190px;
+  }
+  
+  .timeinputs{
+      display: flex;
+      align-items: center;
+  
+  }
+  input[class~=timeinputtext]{
+      border: none;
+      outline: none;
+      border-bottom: 2px solid #C4C4C4;
+      background-color: transparent;
+      width: 100px;
+    }
+  
+    input[class~=percentageinput]{
+      border: none;
+      outline: none;
+      background-color: transparent;
+      width: 15px;
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+      color: #fff;
+    }
+  
+    input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  
+  .openhourmodalbutton {
+    position: relative;
+    z-index: -2;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+  }
+
+  .MuiMenu-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .semicolon{
+    margin: 0 10% 0 10%;
+    color: #c4c4c4;
+}
+
+.semicolonactive{
+  margin: 0 10% 0 10%;
+  color: #000;
+}
+
+.edithourcontainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.edithouricon{
+    width: 16px;
+    height: 14px;
+    color: #E52C32;
+    margin-left: 1%;
+}
+.rightcontainer{
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+}
+.inputcontainer2{
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: #F8FAFB;
+    width: 196px;
+    height: 37px;
+    border-radius: 10px;
+    padding-left: 3%;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 25px;
+    color: #424242;
+}
+.contractcontainer{
+    margin-top: 5%;
+}
+.addcontractbutton{
+    outline: none;
+    border: none;
+    box-shadow: none;
+    width: 145px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: #e52c32;
+    white-space: nowrap;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    margin-top: 2%;
+}
+
+.contractdetailscontainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.contractduration{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 35px;
+    background: #FFE4E5;
+border: 1px solid #E52C32;
+box-sizing: border-box;
+border-radius: 22px;
+font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #e52c32;
+}
+
+.settingslabeltext3{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #C4C4C4;
+    margin-left: 2%;
+}
+.settingslabeltext4{
+    display: flex;
+    justify-content: flex-start;
+    white-space: nowrap;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000;
+    margin-left: 2%;
+}
+.contractrow{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    flex-direction: row;
+}
+.contractfile{
+    display: flex;
+    flex-direction: row ;
+    align-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+.contractfileicon{
+width: 13px;
+height: 13px;
+color: #424242;
+}
+.contractfilenames{
+    display: flex;
+    align-items: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #424242;
+    margin-left: 3%;
+}
+.contractfilebutton{
+    display: flex;
+    margin-top: 3%;
+    
+}
+.renewcontract{
+outline:none;
+box-shadow: none;
+background-color: transparent;
+border: none;
+white-space: nowrap;
+font-family: 'Nunito Sans', sans-serif;
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+color: #E52C32;
+margin-right: -1%;
+}
+.removecontract{
+    outline:none;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+    white-space: nowrap;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #E52C32;
+    margin-left: 1%;
+}
+
+.editprofilemodalbutton{
+    display: flex;
+    width: 95%;
+    justify-content: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

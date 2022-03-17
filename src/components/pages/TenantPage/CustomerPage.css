@@ -1,0 +1,78 @@
+.customerheadertitlegrid {
+  display: grid;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  height: 50px;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr;
+  padding: 0 3%;
+  align-items: center;
+  background-color: #fffaf4;
+}
+.customerheadertitle {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #808080;
+}
+
+.customerrendergrid {
+  display: grid;
+  justify-content: flex-start;
+  height: 75px;
+  width: 100%;
+  grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr;
+  padding: 0 3%;
+  align-items: center;
+}
+
+.customertext {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555570;
+}
+.customerrendercontainer {
+visibility: visible;
+  width: 1263px;
+  height: 520px;
+  overflow-y: hidden;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.atrestaurant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3% 0;
+  width: 100px;
+  height: 25px;
+  white-space: nowrap;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #484dd4;
+}
+
+.notinrestaurant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3% 0;
+  width: 100px;
+  height: 25px;
+  white-space: nowrap;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #ff7878;
+}
