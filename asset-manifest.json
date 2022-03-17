@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/oasisone_management/static/css/main.9739128c.css",
-    "main.js": "/oasisone_management/static/js/main.e8389ef1.js",
+    "main.js": "/oasisone_management/static/js/main.eab98b72.js",
     "static/media/Gurame Asam Manis.png": "/oasisone_management/static/media/Gurame Asam Manis.d18b888a63a0701fe90c.png",
     "index.html": "/oasisone_management/index.html",
     "static/media/Search.svg": "/oasisone_management/static/media/Search.1bc3ede6abc4ffd3d941b591e93d67c3.svg",
     "main.9739128c.css.map": "/oasisone_management/static/css/main.9739128c.css.map",
-    "main.e8389ef1.js.map": "/oasisone_management/static/js/main.e8389ef1.js.map"
+    "main.eab98b72.js.map": "/oasisone_management/static/js/main.eab98b72.js.map"
   },
   "entrypoints": [
     "static/css/main.9739128c.css",
-    "static/js/main.e8389ef1.js"
+    "static/js/main.eab98b72.js"
   ]
 }
