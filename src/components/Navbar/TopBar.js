@@ -20,7 +20,11 @@ function TopBar({ logoutUser }) {
                 Tenant
               </NavLink>
             </li>
-               
+            <li className="menuitem">
+              <NavLink to="/customer" activeClassName='is-active' className="menulinks">
+                Customer
+              </NavLink>
+            </li>           
           </ul>
           <div className="logout">
             <NavLink
