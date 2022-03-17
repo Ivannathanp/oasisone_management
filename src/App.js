@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopBar from "./components/Navbar/TopBar";
 import Login from "./components/pages/LoginPage/ValidateLoginPage";
 import Tenant from "./components/pages/TenantPage/TenantPage";
-import Help from "./components/pages/HelpPage/HelpPage";
 import Customer from "./components/pages/CustomerPage/CustomerPage";
 
 import "./App.css";
@@ -30,7 +29,6 @@ function App({ checked }) {
                 <AuthRoute path="/tenant" exact component={Tenant} />
 
                 <AuthRoute path="/customer" exact component={Customer} />
-                <AuthRoute path="/help" exact component={Help} />
               </div>
             </div>
           </Switch>
