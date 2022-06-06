@@ -33,12 +33,7 @@ function TopBar({ logoutUser }) {
               <NavLink to="/customer" activeClassName='is-active' className="menulinks">
                 Customer
               </NavLink>
-            </li>
-            <li className="menuitem ">
-              <NavLink to="/help" activeClassName='is-active' className="menulinks">
-                Help
-              </NavLink>
-            </li>
+            </li>            
           </ul>
           <div className="logout">
             <NavLink

@@ -1,17 +1,25 @@
 
 .tenantcontainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   width: 100%;
-  margin-top: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 30px;
+  height: auto;
   background-color: #EBEBEB;
 }
+.outertenanttable{
+  position: relative;
+  border-radius: 20px;
+  overflow: scroll;
+}
+.outertenanttable::-webkit-scrollbar{
+  display: none;
+}
 .tenanttable {
-  min-width: 1532px;
-  border: none;
-  border-radius: 10px;
+  width: 100%;
+  min-width: 1263px;
+  height: 100%;
+  border-radius: 15px;
 }
 .tenantheader {
   display: grid;
@@ -159,7 +167,7 @@ margin-left: 54% ;
   display: grid;
   width: 1295px;
   height: 40px;
-  grid-template-columns: 0.5fr 2fr 1.3fr 1fr;
+  grid-template-columns: 0.5fr 2.1fr 1.35fr 0.37fr;
   padding-left: 2%;
   padding-right: 2%;
   grid-gap: 10px;
@@ -194,7 +202,7 @@ margin-left: 54% ;
   justify-items: center;
   align-content: center;
   align-items: center;
-  margin-top: 2%;
+  margin-top: 30px;
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 10px;
@@ -304,7 +312,7 @@ margin-left: 54% ;
 .tenantfooter {
   display: flex;
   align-items: flex-start;
-  min-Width: 1532px;
+  min-width: 1263px;
   margin-top: 2%;
 }
 

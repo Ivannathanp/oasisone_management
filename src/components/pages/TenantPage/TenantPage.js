@@ -40,9 +40,6 @@ import { useOutlineSelectStyles } from "./select1/index";
 import { useTimeSelectStyles } from "./select2/index";
 import { useOutlineSelect2Styles } from "./select3/index";
 
-
-
-
 function TenantPage({ tenant }) {
   const [page, setPage] = useState(0);
   const [orderpage, setOrderPage] = useState(0);
@@ -1171,7 +1168,6 @@ function TenantPage({ tenant }) {
     setCustomerPage(newCustomerPage);
   };
 
-
   //handle color changes
   const [color, setColor] = useState("#424242");
   function handleChange(color) {
@@ -1259,11 +1255,11 @@ function TenantPage({ tenant }) {
   function handleprofileeditclose() {
     setProfileEdit(false);
   }
-  function handlesaveprofile(){
+  function handlesaveprofile() {
     //save to database
 
     //close the modal
-    handleprofileeditclose()
+    handleprofileeditclose();
   }
 
   const [show, setShow] = useState(false);
@@ -1586,123 +1582,129 @@ function TenantPage({ tenant }) {
     reader.readAsDataURL(e.target.files[0]);
   }
 
-  console.log("Search is", search)
-
+  console.log("Search is", search);
 
   //The code start
 
   return (
     <div className="tenantcontainer">
-      <div className={view ? "hide" : "tenanttable"}>
-        <div className="tenantheader">
-          <div className="tenantleft">Total tenant (41)</div>
-          <div className="tenantcenter">
-            <img src={searchicon} className="searchicon" />
-            <input
-              type="text"
-              value={search}
-              className="searchinput"
-              placeholder="Search"
-              onChange={handlesearchinput}
-            />
-            <button
-              className={search == null || search == "" ? "hide" : "searchclosebutton"}
-              onClick={() => setSearch(() => "")}
-            >
-              {" "}
-              <FontAwesomeIcon icon={faXmark} className="closeicon" />
-            </button>
-          </div>
-          <div className="tenantright">
-            <Select
-              disableUnderline
-              classes={{ root: minimalSelectClasses.select }}
-              IconComponent={iconComponent}
-              value={filter}
-              onChange={handlefilterchange}
-              renderValue={(selected) => {
-                if (selected === 0) {
-                  return <p className="placeholder">Filter by</p>;
-                }
-                return selected;
-              }}
-              MenuProps={menuProps}
-            >
-              <MenuItem key={1} value="Alphabetically">
-                Alphabetically
-              </MenuItem>
-              <MenuItem key={2} value="Location">
-                Location
-              </MenuItem>
-              <MenuItem key={3} value="Status">
-                Status
-              </MenuItem>
-            </Select>
-            <button
-              className={filter === 0 ? "hide" : "unhide"}
-              onClick={() => setFilter(0)}
-            >
-              Clear
-            </button>
-          </div>
-        </div>
-
-        <div className="tenantheadertitlegrid">
-          <div className="tenantheadertitle">No.</div>
-          <div className="tenantheadertitle">Tenant Name</div>
-          <div className="tenantheadertitle">Location</div>
-          <div className="tenantheadertitle">Status</div>
-        </div>
-
-        <div className="tenantrendercontainer">
-          {(rowsPerPage > 0
-            ? TenantData.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
-              )
-            : TenantData
-          ).map((post, i) => (
-            <div className="tenantrendergrid">
-              <div className="tenanttext">{i + index}</div>
-              <div className="tenantprofilecontainer">
-                <img
-                  src={require("../../icons/Gurame Asam Manis.png")}
-                  className="tenantprofile"
+      <div className={view ? "hide" : "show"}>
+        <div className="outertenanttable">
+          <div className="tenanttable">
+            <div className="tenantheader">
+              <div className="tenantleft">Total tenant (41)</div>
+              <div className="tenantcenter">
+                <img src={searchicon} className="searchicon" />
+                <input
+                  type="text"
+                  value={search}
+                  className="searchinput"
+                  placeholder="Search"
+                  onChange={handlesearchinput}
                 />
-                {post.name}
+                <button
+                  className={
+                    search == null || search == ""
+                      ? "hide"
+                      : "searchclosebutton"
+                  }
+                  onClick={() => setSearch(() => "")}
+                >
+                  {" "}
+                  <FontAwesomeIcon icon={faXmark} className="closeicon" />
+                </button>
               </div>
-              <div className="tenantaddresscontainer">
-                <div className="clusteraddress">Greenwich Park Cluster</div>
-
-                <div className="address">{post.address}</div>
-              </div>
-
-              <div className="status">
-                {" "}
-                {post.status === 1 ? (
-                  <div className="openstatus">Open</div>
-                ) : post.status === 2 ? (
-                  <div className="closedstatus">Closed</div>
-                ) : null}
-              </div>
-              <div className="viewdetails">
-                <button className="viewbutton" onClick={() => handleview()}>
-                  View Details
+              <div className="tenantright">
+                <Select
+                  disableUnderline
+                  classes={{ root: minimalSelectClasses.select }}
+                  IconComponent={iconComponent}
+                  value={filter}
+                  onChange={handlefilterchange}
+                  renderValue={(selected) => {
+                    if (selected === 0) {
+                      return <p className="placeholder">Filter by</p>;
+                    }
+                    return selected;
+                  }}
+                  MenuProps={menuProps}
+                >
+                  <MenuItem key={1} value="Alphabetically">
+                    Alphabetically
+                  </MenuItem>
+                  <MenuItem key={2} value="Location">
+                    Location
+                  </MenuItem>
+                  <MenuItem key={3} value="Status">
+                    Status
+                  </MenuItem>
+                </Select>
+                <button
+                  className={filter === 0 ? "hide" : "unhide"}
+                  onClick={() => setFilter(0)}
+                >
+                  Clear
                 </button>
               </div>
             </div>
-          ))}
 
-          <div className="tenantfooter">
-            <TablePagination
-              colSpan={3}
-              count={TenantData.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              ActionsComponent={TablePaginationActions}
-            />
+            <div className="tenantheadertitlegrid">
+              <div className="tenantheadertitle">No.</div>
+              <div className="tenantheadertitle">Tenant Name</div>
+              <div className="tenantheadertitle">Location</div>
+              <div className="tenantheadertitle">Status</div>
+            </div>
+
+            <div className="tenantrendercontainer">
+              {(rowsPerPage > 0
+                ? TenantData.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : TenantData
+              ).map((post, i) => (
+                <div className="tenantrendergrid">
+                  <div className="tenanttext">{i + index}</div>
+                  <div className="tenantprofilecontainer">
+                    <img
+                      src={require("../../icons/Gurame Asam Manis.png")}
+                      className="tenantprofile"
+                    />
+                    {post.name}
+                  </div>
+                  <div className="tenantaddresscontainer">
+                    <div className="clusteraddress">Greenwich Park Cluster</div>
+
+                    <div className="address">{post.address}</div>
+                  </div>
+
+                  <div className="status">
+                    {" "}
+                    {post.status === 1 ? (
+                      <div className="openstatus">Open</div>
+                    ) : post.status === 2 ? (
+                      <div className="closedstatus">Closed</div>
+                    ) : null}
+                  </div>
+                  <div className="viewdetails">
+                    <button className="viewbutton" onClick={() => handleview()}>
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+        <div className="tenantfooter">
+          <TablePagination
+            colSpan={3}
+            count={TenantData.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            ActionsComponent={TablePaginationActions}
+          />
         </div>
       </div>
 
@@ -1785,7 +1787,12 @@ function TenantPage({ tenant }) {
         <div className="maincontainer">
           <div className="ordercontainer">
             <div className="backheader">
-              <button className="backheaderbutton" onClick={profileedit? (handleprofileeditclose): () => handleview()}>
+              <button
+                className="backheaderbutton"
+                onClick={
+                  profileedit ? handleprofileeditclose : () => handleview()
+                }
+              >
                 <FontAwesomeIcon icon={faAngleLeft} className="backicon" />
                 Back
               </button>
@@ -2131,9 +2138,15 @@ function TenantPage({ tenant }) {
                   colSpan={3}
                   count={innerview ? OrderData.length : CustomerData.length}
                   rowsPerPage={rowsPerPage2}
-                  page={innerview? orderpage : customerpage}
-                  onPageChange={innerview? handleOrderChangePage : handleCustomerChangePage}
-                  ActionsComponent={innerview ? TablePaginationActionsorder : TablePaginationActionscustomer}
+                  page={innerview ? orderpage : customerpage}
+                  onPageChange={
+                    innerview ? handleOrderChangePage : handleCustomerChangePage
+                  }
+                  ActionsComponent={
+                    innerview
+                      ? TablePaginationActionsorder
+                      : TablePaginationActionscustomer
+                  }
                 />
               </div>
             </div>
@@ -2590,282 +2603,278 @@ function TenantPage({ tenant }) {
               <div className="profileeditcontainer">
                 <div className="outtercontainer">
                   <div className="innercontainer">
-                  <div className="leftcolumncontainer">
-                    <div className="row">
-                      <div className="labelcolumn">
-                        <div className="settingslabeltext">Restaurant Name</div>
-                        <div className="settingsinputcontainer">
-                          <input
-                            type="text"
-                            value="Telaga"
-                            className="inputcontainer1"
-                          />
-                        </div>
-                      </div>
-                      <div className="labelcolumn">
-                        <div className="settingslabeltext2">Profile Color</div>
-                        <div className="settingsinputcontainer">
-                          <div className="colorpick">
-                            <BlockPicker
-                              color={color}
-                              onChange={(color) => {
-                                setColor(color.hex);
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="labelcolumn">
-                        <div className="settingslabeltext">Email</div>
-                        <div className="settingsinputcontainer">
-                          <input
-                            type="text"
-                            value="ivanparmenas@gmail.com"
-                            className="inputcontainer1"
-                          />
-                        </div>
-                      </div>
-                      <div className="labelcolumn">
-                        <div className="settingslabeltext">Password</div>
-                        <div className="settingsinputcontainer">
-                          <div className="passwordsettings">
-                            <input
-                              type={show ? "text" : "password"}
-                              value="IvanNP20"
-                              disabled="true"
-                              className="editpassword"
-                            />
-                            <FontAwesomeIcon
-                              icon={show ? faEye : faEyeSlash}
-                              onClick={() => handleshowpass()}
-                              className={
-                                show ? "passwordshowicon" : "passwordicon"
-                              }
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row2">
-                      <div className="labelcolumn">
-                        <div className="settingslabeltext">Address</div>
-                        <div className="settingsinputcontainer">
-                          <textarea
-                            type="text"
-                            value="Jl. Raya Serpong Kav. Komersial No. 6, Bumi Serpong Damai, Jelupang, Lengkong Karya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten. "
-                            className="textareainputcontainer"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row3">
-                      <div className="leftcontainer">
-                        <div className="settingslabeltext">Opening Hour</div>
-                        <div className="openhourcontainerbutton">
-                          <div className="openhourdetails">
-                            <div className="profiletext3">Monday</div>
-                            <div className="profiletext3">Tuesday</div>
-                            <div className="profiletext3">Wednesday</div>
-                            <div className="profiletext3">Thursday</div>
-                            <div className="profiletext3">Friday</div>
-                            <div className="profiletext3">Saturday</div>
-                            <div className="profiletext3">Sunday</div>
-                          </div>
-                          <div className="openhourdetails">
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">8 AM-21 PM</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">8 AM-21 PM</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">8 AM-21 PM</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">8 AM-21 PM</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">8 AM-21 PM</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">Closed</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                            <div className="edithourcontainer">
-                            <div className="profiletext3">Closed</div>
-                            <FontAwesomeIcon
-                              icon={faPencil}
-                              className="edithouricon"
-                              onClick={() => handleOpenHourEditOpen()}
-                            />
-                            </div>
-                           
-                          </div>
-
-                        
-                        </div>
-                      </div>
-                      <div className="rightcontainer">
+                    <div className="leftcolumncontainer">
+                      <div className="row">
                         <div className="labelcolumn">
                           <div className="settingslabeltext">
-                            Contact Person
+                            Restaurant Name
                           </div>
                           <div className="settingsinputcontainer">
                             <input
                               type="text"
-                              value="089638303065"
-                              className="inputcontainer2"
+                              value="Telaga"
+                              className="inputcontainer1"
                             />
                           </div>
                         </div>
-
-                        <div className="contractcontainer">
-                          <div className="settingslabeltext">
-                            Contract with Oasis
+                        <div className="labelcolumn">
+                          <div className="settingslabeltext2">
+                            Profile Color
                           </div>
-                          <div
-                            className={
-                              contract ? "hide" : "addcontractcontainer"
-                            }
-                          >
-                            <button
-                              className="addcontractbutton"
-                              onClick={() => handleaddcontractopen()}
+                          <div className="settingsinputcontainer">
+                            <div className="colorpick">
+                              <BlockPicker
+                                color={color}
+                                onChange={(color) => {
+                                  setColor(color.hex);
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="labelcolumn">
+                          <div className="settingslabeltext">Email</div>
+                          <div className="settingsinputcontainer">
+                            <input
+                              type="text"
+                              value="ivanparmenas@gmail.com"
+                              className="inputcontainer1"
+                            />
+                          </div>
+                        </div>
+                        <div className="labelcolumn">
+                          <div className="settingslabeltext">Password</div>
+                          <div className="settingsinputcontainer">
+                            <div className="passwordsettings">
+                              <input
+                                type={show ? "text" : "password"}
+                                value="IvanNP20"
+                                disabled="true"
+                                className="editpassword"
+                              />
+                              <FontAwesomeIcon
+                                icon={show ? faEye : faEyeSlash}
+                                onClick={() => handleshowpass()}
+                                className={
+                                  show ? "passwordshowicon" : "passwordicon"
+                                }
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row2">
+                        <div className="labelcolumn">
+                          <div className="settingslabeltext">Address</div>
+                          <div className="settingsinputcontainer">
+                            <textarea
+                              type="text"
+                              value="Jl. Raya Serpong Kav. Komersial No. 6, Bumi Serpong Damai, Jelupang, Lengkong Karya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten. "
+                              className="textareainputcontainer"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row3">
+                        <div className="leftcontainer">
+                          <div className="settingslabeltext">Opening Hour</div>
+                          <div className="openhourcontainerbutton">
+                            <div className="openhourdetails">
+                              <div className="profiletext3">Monday</div>
+                              <div className="profiletext3">Tuesday</div>
+                              <div className="profiletext3">Wednesday</div>
+                              <div className="profiletext3">Thursday</div>
+                              <div className="profiletext3">Friday</div>
+                              <div className="profiletext3">Saturday</div>
+                              <div className="profiletext3">Sunday</div>
+                            </div>
+                            <div className="openhourdetails">
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">8 AM-21 PM</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">8 AM-21 PM</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">8 AM-21 PM</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">8 AM-21 PM</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">8 AM-21 PM</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">Closed</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                              <div className="edithourcontainer">
+                                <div className="profiletext3">Closed</div>
+                                <FontAwesomeIcon
+                                  icon={faPencil}
+                                  className="edithouricon"
+                                  onClick={() => handleOpenHourEditOpen()}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="rightcontainer">
+                          <div className="labelcolumn">
+                            <div className="settingslabeltext">
+                              Contact Person
+                            </div>
+                            <div className="settingsinputcontainer">
+                              <input
+                                type="text"
+                                value="089638303065"
+                                className="inputcontainer2"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="contractcontainer">
+                            <div className="settingslabeltext">
+                              Contract with Oasis
+                            </div>
+                            <div
+                              className={
+                                contract ? "hide" : "addcontractcontainer"
+                              }
                             >
-                              + Add New Contract
-                            </button>
-                          </div>
-
-                          <div
-                            className={
-                              contract ? "contractdetailscontainer" : "hide"
-                            }
-                          >
-                            <div className="contractrow">
-                              <div className="contractduration">2 Years</div>
-                              <div className="settingslabeltext3">
-                                Expired at :
-                              </div>
-                              <div className="settingslabeltext4">
-                                24 January 2022
-                              </div>
-                            </div>
-
-                            <div className="contractfile">
-                              <FontAwesomeIcon icon={faPaperclip} className="contractfileicon"/>
-
-                              <a
-                                href="http://africau.edu/images/default/sample.pdf"
-                                className="contractfilenames"
-                              >
-                                Pdf Name
-                              </a>
-                            </div>
-                            <div className="contractfilebutton">
                               <button
-                                className="renewcontract"
+                                className="addcontractbutton"
                                 onClick={() => handleaddcontractopen()}
                               >
-                                Renew Contract
+                                + Add New Contract
                               </button>
-                              <div className="settingslabeltext3">
-                                &nbsp;or&nbsp;
+                            </div>
+
+                            <div
+                              className={
+                                contract ? "contractdetailscontainer" : "hide"
+                              }
+                            >
+                              <div className="contractrow">
+                                <div className="contractduration">2 Years</div>
+                                <div className="settingslabeltext3">
+                                  Expired at :
+                                </div>
+                                <div className="settingslabeltext4">
+                                  24 January 2022
+                                </div>
                               </div>
-                              <button
-                                className="removecontract"
-                                onClick={() => handleremovecontract()}
-                              >
-                                Remove Contract
-                              </button>
+
+                              <div className="contractfile">
+                                <FontAwesomeIcon
+                                  icon={faPaperclip}
+                                  className="contractfileicon"
+                                />
+
+                                <a
+                                  href="http://africau.edu/images/default/sample.pdf"
+                                  className="contractfilenames"
+                                >
+                                  Pdf Name
+                                </a>
+                              </div>
+                              <div className="contractfilebutton">
+                                <button
+                                  className="renewcontract"
+                                  onClick={() => handleaddcontractopen()}
+                                >
+                                  Renew Contract
+                                </button>
+                                <div className="settingslabeltext3">
+                                  &nbsp;or&nbsp;
+                                </div>
+                                <button
+                                  className="removecontract"
+                                  onClick={() => handleremovecontract()}
+                                >
+                                  Remove Contract
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="rightcolumncontainer">
-                  <div className="settingslabeltext">
-                            Profile Picture
+                    <div className="rightcolumncontainer">
+                      <div className="settingslabeltext">Profile Picture</div>
+                      <div className="editprofileimagecontainer">
+                        <img src={profileimage} className="editprofileimage" />
+
+                        <div className="editprofileimagebuttoncontainer">
+                          <div className="imagebuttoncontainer">
+                            <div className="productimagebutton">
+                              <label for="file-input">
+                                <img src={inputimage} />
+                              </label>
+
+                              <input
+                                id="file-input"
+                                type="file"
+                                className="profileimageinput"
+                                onChange={imageHandler}
+                              />
+                            </div>
                           </div>
-                    <div className="editprofileimagecontainer">
-                      <img src={profileimage} className="editprofileimage" />
-                    
-
-                    <div className="editprofileimagebuttoncontainer">
-                      <div className="imagebuttoncontainer">
-                        <div className="productimagebutton">
-                          <label for="file-input">
-                            <img src={inputimage} />
-                          </label>
-
-                          <input
-                            id="file-input"
-                            type="file"
-                            className="profileimageinput"
-                            onChange={imageHandler}
-                          />
-                        </div>
                         </div>
                       </div>
                     </div>
-
-
-                   
-                  </div>
                   </div>
 
                   <div className="editprofilemodalbutton">
-                      <button
-                        onClick={handleprofileeditclose}
-                        className="cancelbutton"
-                      >
-                        Cancel
-                      </button>
+                    <button
+                      onClick={handleprofileeditclose}
+                      className="cancelbutton"
+                    >
+                      Cancel
+                    </button>
 
-                      <button
-                        type="submit"
-                        onClick={handlesaveprofile}
-                        className="savebutton"
-                      >
-                        Save Profile
-                      </button>
-                    </div>
+                    <button
+                      type="submit"
+                      onClick={handlesaveprofile}
+                      className="savebutton"
+                    >
+                      Save Profile
+                    </button>
+                  </div>
                 </div>
-
-           
               </div>
             </div>
           </div>

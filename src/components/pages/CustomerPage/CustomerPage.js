@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "@mui/material/styles";
 import TablePagination from "../../Pagination/index";
@@ -22,8 +22,95 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import { useMinimalSelectStyles } from "./select/index";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import { ThreeDots } from "react-loader-spinner";
+import moment from "moment";
+import { SocketContext } from "../../socketContext";
 
 function CustomerPage({tenant}) {
+  const localUrl = process.env.REACT_APP_ORDERURL;
+  const [orderData, setOrderData] = useState([]);
+  const [orderRetrieved, setOrderRetrieved] = useState(false);
+   // Get Order Data
+   useEffect(() => {
+    let mounted = true;
+    console.log("called");
+
+    if (mounted) {
+      if (tenant.tenant_id != undefined) {
+        const url = localUrl + "/retrieve/" + tenant.tenant_id;
+        console.log(url);
+
+        fetch(url, {
+          method: "GET",
+          headers: { "content-type": "application/JSON" },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            if (result.status === "SUCCESS") {
+              // console.log(result)
+              setOrderData(() => result.data);
+              setOrderRetrieved(() => true);
+            } else {
+              // console.log(result);
+              setOrderRetrieved(() => false);
+            }
+          });
+      }
+    }
+
+    return () => {
+      mounted = false;
+    };
+  }, [tenant, orderRetrieved]);
+
+  const dateOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
+  const generatePdf = () => {
+    const doc = new jsPDF();
+    const tableColumn = [
+      "No",
+      "Customer Name",
+      "Customer Phonenumber",
+      "Last Order Placed",
+    ];
+    const tableRows = [];
+    orderData.map((post, index) => {
+      const dateOptions = {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      };
+      const ordertime = new Date(post.order_time);
+      const OrderData = [
+        index + 1,
+
+        post.user_name,
+        post.user_phonenumber,
+
+        ordertime.toLocaleDateString("en-ID", dateOptions),
+      ];
+      // push each tickcet's info into a row
+      tableRows.push(OrderData);
+    });
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20 });
+    const date = Date();
+    // we use a date string to generate our filename.
+    const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+    // ticket title. and margin-top + margin-left
+    doc.text(`${tenant.name} Customer Report.`, 14, 15);
+    // we define the name of our PDF file.
+    doc.save(`${tenant.name}_customerreport.pdf`);
+  };
+
   const [page, setPage] = useState(0);
   const rowsPerPage = 7;
 
@@ -240,6 +327,7 @@ const handleChangePage = (event, newPage) => {
 
 
       <div className="customercontainer">
+ 
         <div className="customertable">
         <div className="tenantheader">
           <div className="tenantleft">Total Customer (41)</div>
@@ -295,62 +383,62 @@ const handleChangePage = (event, newPage) => {
         </div>
 
         <div className="customerinnertable">
-          <div className="customerheader">
-            <div className="customerleft">All Customer</div>
-            <div className="customerright">
-              <button className="downloadbutton">Download as PDF</button>
-            </div>
-          </div>
-
-          <div className="customerheadertitlegrid">
-            <div className="customerheadertitle">NO</div>
-            <div className="customerheadertitle">NAME</div>
-            <div className="customerheadertitle">PHONE NUMBER</div>
-            <div className="customerheadertitle">LAST ORDER</div>
-            <div className="customerheadertitle">LAST TENANT</div>
-            <div className="customerheadertitle">STATUS</div>
-          </div>
-
-          <div className="customerrendercontainer">
-    
-            {(rowsPerPage > 0
-              ? CustomerData.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage,
-                  
-                )
-              : CustomerData
-            ).map((post, i) => (
-              <div className={i != 7 ? "bordered" : "noborder"}>
-                <div className="customerrendergrid">
-                  <div className="customertext">{i + index}</div>
-                  
-                  <div className="customertext">{post.customername}</div>
-                  <div className="customertext">{post.customerphone}
-                   
-                  </div>
-                  <div className="customertext">{post.lastorder}
-                   
-                   </div>
-                   <div className="customertext">{post.lasttenant}
-                   
-                   </div>
-                  <div className="status">
-                    {" "}
-                    {post.status == 1 ? (
-                      <div className="atrestaurant">At restaurant</div>
-                    ) : post.status == 2 ? (
-                      <div className="notinrestaurant">Not in here</div>
-                    ) : null}
-                  </div>
+        <div className="outercustomertable">
+            <div className="customertable">
+              <div className="customerheader">
+                <div className="customerleft">All Customer</div>
+                <div className="customerright">
+                  <button className="downloadbutton" onClick={generatePdf}>
+                    Download as PDF{" "}
+                  </button>
                 </div>
               </div>
-            ))}
+              <div className="customerheadertitlegrid">
+                <div className="customerheadertitle">NO</div>
+                <div className="customerheadertitle">NAME</div>
+                <div className="customerheadertitle">PHONE NUMBER</div>
+                <div className="customerheadertitle">LAST ORDER</div>
+              </div>
+
+              <div className="customerrendercontainer">
+                {(rowsPerPage > 0
+                  ? orderData.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : orderData
+                ).map((post, i) => {
+                  const orderDate = new Date(post.order_time);
+                  console.log(
+                    "slice",
+                    orderData.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  );
+                  return (
+                    <div className={i != 7 ? "bordered" : "noborder"}>
+                      <div className="customerrendergrid">
+                        <div className="customertext">{i + index}</div>
+                        <div className="customertext">{post.user_name}</div>
+                        <div className="customertext">
+                          {post.user_phonenumber}
+                        </div>
+                        <div className="customertext">
+                          {orderDate.toLocaleDateString("en-ID", dateOptions)} |{" "}
+                          {moment(post.order_time).fromNow()}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div className="footer">
             <TablePagination
               colSpan={3}
-              count={CustomerData.length}
+              count={orderData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
