@@ -17,6 +17,7 @@ import { logoutUser } from "../Auth/actions/managementActions";
 
 function TopBar({ logoutUser }) {
   let history = useHistory();
+  const [isActive, setisActive] = useState(false);
 
   return (
     <>
@@ -25,7 +26,19 @@ function TopBar({ logoutUser }) {
           <div className="topbarheader">Oasis One</div>
           <ul className="menu">
             <li className="menuitem">
-              <NavLink to="/tenant" activeClassName='is-active' className="menulinks">
+              <NavLink to="/tenant" className={isActive? "is-active": "menulinks"}
+              isActive={(match, location) => {
+                if (!match) {
+                  setisActive(false);
+                }
+                if (
+                  location.pathname === `/tenantdetails` ||
+                  location.pathname === "/tenant"
+                ) {
+                  setisActive(true);
+                }
+                return false;
+              }}>
                 Tenant
               </NavLink>
             </li>
