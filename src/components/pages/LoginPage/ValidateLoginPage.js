@@ -73,7 +73,7 @@ function ValidateLoginPage({ loginUser }) {
                       className="loginbutton"
                     >
                       {" "}
-                      Post Data{" "}
+                      Login{" "}
                     </button>
                   )}
                   {isSubmitting && (

@@ -12,9 +12,6 @@ import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import { useMinimalSelectStyles } from "./select/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-
-
-
 export const Block = ({
   onChange,
   onSwatchHover,
@@ -27,7 +24,7 @@ export const Block = ({
   className = "",
 }) => {
   const transparent = hex === "transparent";
-  
+
   const handleChange = (hexCode, e) => {
     setShowPalette(false);
     color.isValidHex(hexCode) &&
@@ -81,27 +78,25 @@ export const Block = ({
             color: "#949494",
           },
           card: {
-            transition: "opacity 0.3s ease-in",
+            transition: "all 0.3s ease-in",
             width: "217px",
             background: "#F8FAFB",
-            opacity: "0",
             boxShadow: "none",
             borderRadius: "0px 0px 10px 10px ",
             position: "absolute",
             marginTop: "0px",
             zIndex: '-1',
-            
+            transform: 'translateY(-100%)'
           },
           cardactive: {
-            transition: "opacity 0.3s ease-in-",
+            transition: "all 0.3s ease-in",
             width: "217px",
             background: "#F8FAFB",
-            opacity: "1",
             boxShadow: "none",
             borderRadius: "0px 0px 10px 10px ",
             position: "absolute",
             marginTop: "0px",
-            zIndex: '2',
+            zIndex: '-1',
           },
           head: {
             height: "110px",
@@ -146,21 +141,12 @@ export const Block = ({
     { "hide-triangle": triangle === "hide" }
   );
 
-  const handleshowpalette = () => {
-    if (showpalette) {
-      setShowPalette(false);
-  showpalette =!showpalette
-    } else {
-      setShowPalette(true);
-    }
-  };
-
   return (
     <div style={styles.container}>
       <button
         style={showpalette ? styles.buttonshow : styles.button}
         type="button"
-        onClick={handleshowpalette}
+        onClick={()=>setShowPalette((state)=>!state)}
       >
         <div style={styles.insidediv}>&nbsp;</div>
         <FontAwesomeIcon
