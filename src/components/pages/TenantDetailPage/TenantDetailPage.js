@@ -44,6 +44,7 @@ import { useOutlineSelectStyles } from "./select1/index";
 import { useTimeSelectStyles } from "./select2/index";
 import { useOutlineSelect2Styles } from "./select3/index";
 import Color from "color";
+import { ThreeDots } from "react-loader-spinner";
 
 function TenantDetailPage() {
   const history = useHistory();
@@ -988,7 +989,7 @@ function TenantDetailPage() {
           method: "GET",
           headers: { "content-type": "application/JSON" },
         })
-          .then((response) => response.json())
+         
           .then((result) => {
             if (result.status === "SUCCESS") {
               setContractData([result.data]);
@@ -1112,7 +1113,7 @@ function TenantDetailPage() {
     <div className="container">
       {DateAndTimeModal()}
       <div className="tenantcontainer2">
-        {tenantRetrieved == true && (
+        {tenantRetrieved ? (
           <div className="viewdetailscontainer">
             <div className="sidepanel">
               <div className="profilecontainer">
@@ -2143,6 +2144,19 @@ function TenantDetailPage() {
                 </div>
               </div>
             </div>
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              height: "100vh",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            <ThreeDots color="#e52c32" height={80} width={80} />
           </div>
         )}
       </div>
