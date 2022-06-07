@@ -550,15 +550,12 @@ function TenantDetailPage() {
         if (closedtimetf == opentimetf) {
           if (closedtimehour == opentimehour) {
             if (closedtimeminute <= opentimeminute) {
-              // console.log("Closed time cant be earlier than open time");
               return false;
             }
           } else if (closedtimehour < opentimehour) {
-            // console.log("Closed time cant be earlier than open time");
             return false;
           }
         } else if (closedtimetf == "AM" && opentimetf == "PM") {
-          // console.log("Closed time cant be earlier than open time");
           return false;
         } else {
           return true;

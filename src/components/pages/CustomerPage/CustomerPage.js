@@ -31,11 +31,9 @@ function CustomerPage() {
   // Get User Data
   useEffect(() => {
     let mounted = true;
-    console.log("called");
 
     if (mounted) {
       const url = localUrl + "/retrieve";
-      console.log(url);
 
       fetch(url, {
         method: "GET",
@@ -44,11 +42,9 @@ function CustomerPage() {
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "SUCCESS") {
-            // console.log(result)
             setUserData(result.data);
             setUserRetrieved(() => true);
           } else {
-            // console.log(result);
             setUserRetrieved(() => false);
           }
         });
@@ -110,8 +106,7 @@ function CustomerPage() {
 
   const [formValues, setFormValues] = useState("");
   const [customeropen, setcustomeropen] = useState(false);
-  const handlecustomeropen = () =>
-    setcustomeropen(true, console.log("clicked"));
+  const handlecustomeropen = () => setcustomeropen(true);
   const handlecustomerclose = () => setcustomeropen(false);
 
   const [restaurantname, setRestaurantname] = useState("");
@@ -194,7 +189,6 @@ function CustomerPage() {
   //search and filter
   const [customerSearch, setCustomerSearch] = useState("");
 
-  console.log("search", customerSearch);
 
   const [customerfilter, setCustomerFilter] = useState(0);
 
@@ -225,70 +219,61 @@ function CustomerPage() {
     );
   };
 
-  async function handleCustomerFilter(e){
-    if(e != 0){
-      setCustomerFilter(e.target.value)
+  async function handleCustomerFilter(e) {
+    if (e != 0) {
+      setCustomerFilter(e.target.value);
     }
 
-    
-    if(e === 0){
-      setCustomerFilter(0)
+    if (e === 0) {
+      setCustomerFilter(0);
       const filteredurl = localUrl + "/retrieve";
-        console.log(filteredurl)
-        fetch(filteredurl, {
-          method: "GET",
-          headers: { "content-type": "application/JSON" },
-        })
-          .then((response) => response.json())
-          .then((result) => {
-            if (result.status === "SUCCESS") {
-              console.log(result.data)
-              userData(result.data);
-              setUserRetrieved(() => true);
-            } else {
-              setUserRetrieved(() => false);
-            }
-          });
+      fetch(filteredurl, {
+        method: "GET",
+        headers: { "content-type": "application/JSON" },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.status === "SUCCESS") {
+            userData(result.data);
+            setUserRetrieved(() => true);
+          } else {
+            setUserRetrieved(() => false);
+          }
+        });
     }
 
-      if (e.target.value == "Alphabetically"){
-        const filteredurl = localUrl + "/client/name/ascending";
-        console.log(filteredurl)
-        fetch(filteredurl, {
-          method: "GET",
-          headers: { "content-type": "application/JSON" },
-        })
+    if (e.target.value == "Alphabetically") {
+      const filteredurl = localUrl + "/client/name/ascending";
+      fetch(filteredurl, {
+        method: "GET",
+        headers: { "content-type": "application/JSON" },
+      })
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "SUCCESS") {
-            console.log(result.data)
             userData(result.data);
             setUserRetrieved(() => true);
           } else {
             setUserRetrieved(() => false);
           }
         });
-      } else if (e.target.value == "Location"){
-        const filteredurl = localUrl + "/client/location/ascending";
-        fetch(filteredurl, {
-          method: "GET",
-          headers: { "content-type": "application/JSON" },
-        })
+    } else if (e.target.value == "Location") {
+      const filteredurl = localUrl + "/client/location/ascending";
+      fetch(filteredurl, {
+        method: "GET",
+        headers: { "content-type": "application/JSON" },
+      })
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "SUCCESS") {
-            console.log(result.data)
             userData(result.data);
             setUserRetrieved(() => true);
           } else {
             setUserRetrieved(() => false);
           }
         });
-      } }
-      
-  
-
-  
+    }
+  }
 
   return (
     <div className="container">
@@ -297,7 +282,9 @@ function CustomerPage() {
           <div className="outercustomertable">
             <div className="customertable">
               <div className="tenantheader">
-                <div className="tenantleft">Total Customer ({userData.length})</div>
+                <div className="tenantleft">
+                  Total Customer ({userData.length})
+                </div>
                 <div className="tenantcenter">
                   <img src={searchicon} className="searchicon" />
                   <input
@@ -323,7 +310,7 @@ function CustomerPage() {
                     classes={{ root: minimalSelectClasses.select }}
                     IconComponent={iconComponent}
                     value={customerfilter}
-                    onChange={(e)=>handleCustomerFilter(e)}
+                    onChange={(e) => handleCustomerFilter(e)}
                     renderValue={(selected) => {
                       if (selected === 0) {
                         return <p className="placeholder">Filter by</p>;
@@ -338,7 +325,6 @@ function CustomerPage() {
                     <MenuItem key={2} value="Location">
                       Location
                     </MenuItem>
-                    
                   </Select>
                   <button
                     className={customerfilter === 0 ? "hide" : "unhide"}
@@ -377,7 +363,6 @@ function CustomerPage() {
                           )
                         : userData
                       ).map((post, i) => {
-                        console.log("history", post.history[0]);
                         const orderDate = new Date(post.history[0].lastOrder);
 
                         return (
@@ -415,13 +400,11 @@ function CustomerPage() {
                                 .toLowerCase()
                                 .includes(customerSearch.toLowerCase())
                             ) {
-                              console.log("I am filtered posts: ", post);
 
                               return post;
                             }
                           })
                           .map((post, indexs) => {
-                            console.log(post);
                             const orderDate = new Date(
                               post.history[0].lastOrder
                             );

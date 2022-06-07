@@ -5,8 +5,8 @@ import { sessionService } from "redux-react-session";
 // the remote endpoint and local
 
 const remoteUrl = "https://oasisone.herokuapp.com/";
-const localUrl = "http://oasis-one.com:5000/";
-const currentUrl = remoteUrl;
+const localUrl = "https://backend.oasis-one.com/api/management";
+const currentUrl = localUrl;
 
 export const loginUser = (
   credentials,
@@ -18,7 +18,7 @@ export const loginUser = (
 
   return () => {
     axios
-      .post(`${currentUrl}management/signin`, credentials, {
+      .post(`${currentUrl}/signin`, credentials, {
         headers: {
           "Content-Type": "application/json",
         },

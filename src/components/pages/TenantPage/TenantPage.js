@@ -31,10 +31,10 @@ import searchicon from "../../icons/Search.svg";
 import { useHistory } from "react-router-dom";
 import { useMinimalSelectStyles } from "./select/index";
 import { ThreeDots } from "react-loader-spinner"
+import moment from "moment";
 
 function TenantPage() {
   const localUrl = process.env.REACT_APP_MANAGEMENTURL;
-  console.log(localUrl);
   const [tenantData, setTenantData] = useState([]);
   const [tenantRetrieved, setTenantRetrieved] = useState(false);
 
@@ -43,7 +43,6 @@ function TenantPage() {
     let mounted = true;
 
     if (mounted) {
-      console.log("localUrl");
 
       const url = localUrl + "/user";
       fetch(url, {
@@ -65,7 +64,6 @@ function TenantPage() {
     };
   }, [tenantRetrieved]);
 
-  console.log("tenants are: ", tenantData.length);
 
   // Navigate
   const history = useHistory();
@@ -79,10 +77,8 @@ function TenantPage() {
 
   // search and filter
   const [search, setSearch] = useState("");
-  console.log("search", search);
 
   const [filtered, setFiltered] = useState(0);
-  console.log("filter", filtered);
 
   //handle filter select drop down
   const minimalSelectClasses = useMinimalSelectStyles();
@@ -111,6 +107,8 @@ function TenantPage() {
     );
   };
 
+  const date = new Date();
+
   async function handleFilter(e){
     if(e != 0){
       setFiltered(e.target.value)
@@ -120,7 +118,6 @@ function TenantPage() {
     if(e === 0){
 setFiltered(0)
       const filteredurl = localUrl + "/user";
-        console.log(filteredurl)
         fetch(filteredurl, {
           method: "GET",
           headers: { "content-type": "application/JSON" },
@@ -128,7 +125,6 @@ setFiltered(0)
           .then((response) => response.json())
           .then((result) => {
             if (result.status === "SUCCESS") {
-              console.log(result.data)
               setTenantData(result.data);
               setTenantRetrieved(() => true);
             } else {
@@ -139,7 +135,6 @@ setFiltered(0)
 
       if (e.target.value == "Alphabetically"){
         const filteredurl = localUrl + "/tenant/name/ascending";
-        console.log(filteredurl)
         fetch(filteredurl, {
           method: "GET",
           headers: { "content-type": "application/JSON" },
@@ -147,7 +142,6 @@ setFiltered(0)
           .then((response) => response.json())
           .then((result) => {
             if (result.status === "SUCCESS") {
-              console.log(result.data)
               setTenantData(result.data);
               setTenantRetrieved(() => true);
             } else {
@@ -170,9 +164,12 @@ setFiltered(0)
             }
           });
       } else if (e.target.value == "Status"){
-        const  filteredurl = localUrl + "/tenant/status/ascending";
+        const  filteredurl = localUrl + "/tenant/status";
         fetch(filteredurl, {
           method: "GET",
+          body: JSON.stringify({
+          sortingDays: moment(date).format("dddd")
+          }),
           headers: { "content-type": "application/JSON" },
         })
           .then((response) => response.json())
@@ -207,7 +204,6 @@ setFiltered(0)
 
       setIndex(index + 6);
     };
-    console.log("index", index);
     return (
       <div className="tablecontainerbutton">
         <button
@@ -255,7 +251,6 @@ setFiltered(0)
     setPage(newPage);
   };
 
-  console.log(tenantData)
   return (
   <div className="container">
       {tenantRetrieved? (<div className="tenantcontainer">
@@ -333,7 +328,6 @@ setFiltered(0)
                   )
                 : tenantData
               ).map((post, indexs) => {
-                console.log("item", post);
                 return (
                   <div className="tenantrendergrid">
                     <div className="tenanttext">{indexs + index}</div>
@@ -354,13 +348,8 @@ setFiltered(0)
                           const today = new Date();
 
                           if (numberdayweek[today.getDay()] === index + 1) {
-                            console.log(
-                              "I am called",
-                              numberdayweek[today.getDay()] === index + 1
-                            );
-                            console.log(posts.day, " is ", posts.isClosed);
+
                             if (posts.isClosed) {
-                              console.log(posts.day, " is ", posts.isClosed);
                               return <div className="closedstatus">Closed</div>;
                             } else if (!posts.isClosed) {
                               return <div className="openstatus">Open</div>;
@@ -389,13 +378,11 @@ setFiltered(0)
                               post.name
                               .toLowerCase().includes(search.toLowerCase()) 
                             ) {
-                              console.log("I am filtered posts: ", post);
 
                               return post;
                             }
                           })
                           .map((post, indexs) => {
-                            console.log(post);
                          return(
                           <div className="tenantrendergrid">
                              <div className="tenanttext"></div>
@@ -409,6 +396,24 @@ setFiltered(0)
                             <div className="address">{post.address}</div>
                           </div>
       
+                          {/* function compareFirstNames( a, b ) {
+  if ( a.first_name < b.first_name ){
+    return -1;
+  }
+  if ( a.first_name > b.first_name ){
+    return 1;
+  }
+  return 0;
+}
+
+var people =[
+    {"first_name":"Carol", "age":29},
+    {"first_name":"Anna", "age":32},
+    {"first_name":"Bob", "age":32}
+];
+
+people.sort( compareFirstNames ); */}
+
                           <div className="status">
                             {tenantRetrieved == true &&
                               post.openingDays.map((posts, index) => {
@@ -416,13 +421,8 @@ setFiltered(0)
                                 const today = new Date();
       
                                 if (numberdayweek[today.getDay()] === index + 1) {
-                                  console.log(
-                                    "I am called",
-                                    numberdayweek[today.getDay()] === index + 1
-                                  );
-                                  console.log(posts.day, " is ", posts.isClosed);
+                                
                                   if (posts.isClosed) {
-                                    console.log(posts.day, " is ", posts.isClosed);
                                     return <div className="closedstatus">Closed</div>;
                                   } else if (!posts.isClosed) {
                                     return <div className="openstatus">Open</div>;
