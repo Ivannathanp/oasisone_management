@@ -3,7 +3,7 @@ import { sessionService } from "redux-react-session";
 
 
 // the remote endpoint and local
-const currentUrl = "http://localhost:5000.com/";
+const currentUrl = "http://localhost:5000/";
 
 export const loginUser = (
   credentials,
