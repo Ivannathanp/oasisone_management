@@ -1,15 +1,20 @@
 {
   "files": {
-    "main.css": "/oasisone_management/static/css/main.9739128c.css",
-    "main.js": "/oasisone_management/static/js/main.e8389ef1.js",
-    "static/media/Gurame Asam Manis.png": "/oasisone_management/static/media/Gurame Asam Manis.d18b888a63a0701fe90c.png",
+    "main.css": "/oasisone_management/static/css/main.a8647f78.css",
+    "main.js": "/oasisone_management/static/js/main.9fea8249.js",
+    "static/js/498.2dd57ca7.chunk.js": "/oasisone_management/static/js/498.2dd57ca7.chunk.js",
+    "static/js/703.8a37700d.chunk.js": "/oasisone_management/static/js/703.8a37700d.chunk.js",
+    "static/js/513.3b218092.chunk.js": "/oasisone_management/static/js/513.3b218092.chunk.js",
     "index.html": "/oasisone_management/index.html",
-    "static/media/Search.svg": "/oasisone_management/static/media/Search.1bc3ede6abc4ffd3d941b591e93d67c3.svg",
-    "main.9739128c.css.map": "/oasisone_management/static/css/main.9739128c.css.map",
-    "main.e8389ef1.js.map": "/oasisone_management/static/js/main.e8389ef1.js.map"
+    "static/media/Search.svg": "/oasisone_management/static/media/Search.8f4ebfe5e52d0d66d1833e821c7c1bf9.svg",
+    "main.a8647f78.css.map": "/oasisone_management/static/css/main.a8647f78.css.map",
+    "main.9fea8249.js.map": "/oasisone_management/static/js/main.9fea8249.js.map",
+    "498.2dd57ca7.chunk.js.map": "/oasisone_management/static/js/498.2dd57ca7.chunk.js.map",
+    "703.8a37700d.chunk.js.map": "/oasisone_management/static/js/703.8a37700d.chunk.js.map",
+    "513.3b218092.chunk.js.map": "/oasisone_management/static/js/513.3b218092.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9739128c.css",
-    "static/js/main.e8389ef1.js"
+    "static/css/main.a8647f78.css",
+    "static/js/main.9fea8249.js"
   ]
 }
