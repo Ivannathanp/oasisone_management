@@ -23,7 +23,7 @@ function TopBar({ logoutUser }) {
     <>
       <nav className="topbar">
         <div className="topbarcontainer">
-          <div className="topbarheader">Oasis One</div>
+          <div className="topbarheader">La Carte</div>
           <ul className="menu">
             <li className="menuitem">
               <NavLink to="/tenant" className={isActive? "is-active": "menulinks"}
