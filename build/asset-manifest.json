@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/oasisone_management/static/css/main.a8647f78.css",
-    "main.js": "/oasisone_management/static/js/main.9fea8249.js",
+    "main.js": "/oasisone_management/static/js/main.80495ab9.js",
     "static/js/498.2dd57ca7.chunk.js": "/oasisone_management/static/js/498.2dd57ca7.chunk.js",
     "static/js/703.8a37700d.chunk.js": "/oasisone_management/static/js/703.8a37700d.chunk.js",
     "static/js/513.3b218092.chunk.js": "/oasisone_management/static/js/513.3b218092.chunk.js",
     "index.html": "/oasisone_management/index.html",
     "static/media/Search.svg": "/oasisone_management/static/media/Search.8f4ebfe5e52d0d66d1833e821c7c1bf9.svg",
     "main.a8647f78.css.map": "/oasisone_management/static/css/main.a8647f78.css.map",
-    "main.9fea8249.js.map": "/oasisone_management/static/js/main.9fea8249.js.map",
+    "main.80495ab9.js.map": "/oasisone_management/static/js/main.80495ab9.js.map",
     "498.2dd57ca7.chunk.js.map": "/oasisone_management/static/js/498.2dd57ca7.chunk.js.map",
     "703.8a37700d.chunk.js.map": "/oasisone_management/static/js/703.8a37700d.chunk.js.map",
     "513.3b218092.chunk.js.map": "/oasisone_management/static/js/513.3b218092.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8647f78.css",
-    "static/js/main.9fea8249.js"
+    "static/js/main.80495ab9.js"
   ]
 }
