@@ -16,7 +16,7 @@ import { connect } from "react-redux";
 function App({ checked }) {
   return (
     
-    <Router>
+    <Router basename="/oasisone_management">
       {checked && (
         <div className="app">
           <Switch>
